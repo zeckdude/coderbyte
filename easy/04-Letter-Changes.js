@@ -5,10 +5,26 @@
 // Then capitalize every vowel in this new string (a, e, i, o, u) and finally return this modified string.
 
 function LetterChanges(str) {
+  // Identify any letters in the string
+  str = str.replace(/[a-zA-Z]/g, function(match) {
+    // If the matched letter is a "z" or "Z", change it to an "a" or "A"
+    if(match === "z") {
+      return "a";
+    } else if(match === "Z") {
+      return "A";
+    } else {
+      // Replace matched letter with the next one in the alphabet
+      return String.fromCharCode(match.charCodeAt() + 1);
+    }
+  });
 
-  // code goes here
+  // Make any vowels uppercase
+  str = str.replace(/[aeiou]/g, function(match) {
+    return match.toUpperCase();
+  });
+
+  // Return the formatted string
   return str;
-
 }
 
 console.log( LetterChanges( "hello*3"  ) );

@@ -4,15 +4,20 @@
 // Words will be separated by only one space.
 
 function LetterCapitalize(str) {
+  //Make the first character uppercase
+  str = str.substring(0, 1).toUpperCase() + str.substring(1, str.length);
 
-  // code goes here
+  // Capture all characters that come after a space and make them uppercase
+  str = str.replace(/ (\w)/g, function(match, capture){
+    return " " + capture.toUpperCase();
+  });
+
+  // Return the formatted string
   return str;
-
 }
 
-console.log( LetterCapitalize("hello world") )
-console.log( LetterCapitalize("i ran there") )
-
+console.log( LetterCapitalize("hello world") );
+console.log( LetterCapitalize("i ran there") );
 
 
 
